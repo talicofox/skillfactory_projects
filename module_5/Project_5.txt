@@ -1,0 +1,6 @@
+Проект 5
+
+Копия проекта с Kaggle:
+
+1. NatalyaLisitskaya https://www.kaggle.com/talicofox/credit-scoring
+2. 0.738
