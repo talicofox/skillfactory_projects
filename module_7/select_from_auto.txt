@@ -1,0 +1,80 @@
+WITH a AS(
+	SELECT car_url, concat('{"',replace(complectation_dict2,',','":true, "'),'":true}') complectation
+	FROM auto
+	WHERE NOT complectation_dict2 = ''
+	UNION
+	SELECT car_url, complectation_dict2 complectation
+	FROM auto
+	WHERE complectation_dict2 = ''
+),
+v AS(select car_url,
+SUBSTRING (vin,'([^(VIN)][\wd]+)') as vin
+from auto
+where not vin isnull
+union
+select car_url,vin
+from auto2)
+SELECT 
+	"bodyType",
+	brand,
+	car_url,
+	color,
+	SUBSTRING(v.vin,1,3) vin,
+	description,
+   	"engineDisplacement",
+   	regexp_replace(super_gen::json->>'power','л.с.','') "enginePower",
+	(regexp_replace(super_gen::json->>'power','л.с.',''))::integer/50 "groupPower",
+	a.complectation equipment_dict,
+	super_gen::json->>'engine_type' "fuelType",
+	mileage,
+	upper(split_part(replace(regexp_replace(model_info::json->> 'name', '[0-9]+ серии ', ''),'(ВАЗ) ',''),' ',1)) model_name,
+	SUBSTRING(model_info::json->> 'name', 'Рестайлинг') restailing,
+	"numberOfDoors",
+	parsing_unixtime,
+	'RUB' "priceCurrency",
+	"productionDate",
+	2200000000+ROW_NUMBER() over() "sell_id",
+	"super_gen",
+	super_gen::json->>'transmission' "transmission",
+	equipment_dict::json->> 'vendor' vendor,
+	owners "Владельцы",
+	ownership "Владение",
+	pts "ПТС",
+	super_gen::json->>'gear_type' "Привод",
+	wheel "Руль",
+	state "Состояние",
+	customs "Таможня",
+	"transportTax",
+	"saleDate",
+   regexp_replace(super_gen::json->>'acceleration','с','') acceleration,
+   regexp_replace(super_gen::json->> 'fuel_rate','л','') fuel_rate,
+   equipment_dict::json->> 'fuel' fuel,
+   equipment_dict::json->> 'class' class_,
+   equipment_dict::json->> 'Length' length_,
+   equipment_dict::json->> 'Width' width_,
+   equipment_dict::json->> 'High' high,
+   equipment_dict::json->> 'Number of gears' num_gears,
+   equipment_dict::json->> 'Оценка безопасности' rate_safety,
+   equipment_dict::json->> 'Wheelbase' wheelbase,
+   equipment_dict::json->> 'clearance_min' clearance_min,
+   equipment_dict::json->> 'Wheel size' wheelsize,
+   equipment_dict::json->> 'Trunk volume min/max, l' trunk_volume_min_max,
+   equipment_dict::json->> 'Fuel tank capacity, l' fuel_tank_capacity,
+   equipment_dict::json->> 'Gross weight, kg' gross_weight,
+   equipment_dict::json->> 'Type of front suspension' type_front_suspension,
+   equipment_dict::json->> 'Rear suspension type' rear_suspension_type,
+   equipment_dict::json->> 'Front brakes' front_brakes,
+   equipment_dict::json->> 'Rear brakes' rear_brakes,
+   equipment_dict::json->> 'Maximum speed, km/h' max_speed,
+   equipment_dict::json->> 'Экологический класс' eco_class,
+   equipment_dict::json->> 'Выбросы CO2, г/км' co2,
+   equipment_dict::json->> 'Engine location' engine_location,
+   equipment_dict::json->> 'Boost type' boost_type,
+   equipment_dict::json->> 'power_kvt' power_kvt,
+   equipment_dict::json->> 'Количество цилиндров' qual_cyl,
+   equipment_dict::json->> 'Число клапанов на цилиндр' qual_vent,
+   equipment_dict::json->> 'Система питания двигателя' esp,
+   equipment_dict::json->> 'Степень сжатия' compression_ratio,
+   price
+FROM auto
+JOIN a USING(car_url) JOIN v USING(car_url);
