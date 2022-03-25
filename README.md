@@ -15,3 +15,5 @@ module_5 Проект 5 Credit scoring
 module_7 Предсказание цен авто (регрессия): скрипты
 
 module_9 Итоговое задание (server)
+
+year_2_module_6 парсинг викторины на сайте https://tproger.ru/quiz/real-programmer с использованием selenium'а
