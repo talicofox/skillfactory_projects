@@ -1,24 +1,22 @@
 # skillfactory_projects
+## year_1
 Выполненные проекты в юнитах при обучении на skillfactory:
 
-## module_1 
+**module_1 Проект 1. Кто хочет стать миллионером кинопроката?
 
-Проект 1. Кто хочет стать миллионером кинопроката?
+**module_2 Проект 2. Разведывательный анализ данных
 
-## module_2 
+**module_4 Проект 4 Авиаперевозки
 
-Проект 2. Разведывательный анализ данных
-
-module_4 Проект 4 Авиаперевозки
-
-module_5 Проект 5 Credit scoring
+**module_5 Проект 5 Credit scoring
 
   https://www.kaggle.com/talicofox/credit-scoring
 
 
-module_7 Предсказание цен авто (регрессия): скрипты
+**module_7 Предсказание цен авто (регрессия): скрипты
 
-module_9 Итоговое задание (server)
+**module_9 Итоговое задание (server)
 
-# year_2_module_6
-парсинг викторины на сайте https://tproger.ru/quiz/real-programmer с использованием selenium'а
+## year_2
+
+**year2_module_6 парсинг викторины на сайте https://tproger.ru/quiz/real-programmer с использованием selenium'а
