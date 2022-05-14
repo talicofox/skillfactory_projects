@@ -30,3 +30,6 @@
 
 **year2_module_6**
 Парсинг викторины на сайте https://tproger.ru/quiz/real-programmer с использованием selenium'а
+
+**year2_module_14**
+МОДУЛЬ 14. ПРАКТИКА 14.6 (HW-03)
