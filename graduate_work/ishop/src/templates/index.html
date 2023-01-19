@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Online SHOP </title>
+{% endblock %}
+
+{% block body %}
+<form name="name_request">
+<h1>Введите покупателя</h1>
+
+<input type="text" id='visitor_name'  maxlength="30" aria-label="name">
+<a class="btn btn-outline-primary" href="/predictions?visitor_name={{visitor_name}}">Порекомендовать товар</a>
+
+
+</form>
+
+
+{% endblock %}

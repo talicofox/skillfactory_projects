@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Рекомендация </title>
+{% endblock %}
+
+{% block body %}
+
+    Для посетителя сайта {{ visitor_name }} рекомендуем:
+    
+    
+    {% for f in ids %}
+    <div>
+         <hr>
+         <p>
+             {{ f }}
+         </p>   
+    </div>
+    {% endfor %}
+
+
+{% endblock %}
+
+
+
+
